@@ -1,0 +1,7 @@
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/config/WebSpringSecurityConfig.java
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/controller/DemoController.java
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/serviceImpl/ApiClient.java
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/serviceImpl/ClientDetailsServiceImpl.java
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/config/MyAuthorzationServerConfig.java
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/config/MyResourceServer.java
+/home/vikas/workspace/notification-oauth/src/main/java/com/snapdeal/core/NotificationApp.java
