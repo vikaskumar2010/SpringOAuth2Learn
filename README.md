@@ -1,2 +1,2 @@
-# SpringOAuth2Learn
+# SpringOAuth2 Example
 Learning Spring OAuth2
