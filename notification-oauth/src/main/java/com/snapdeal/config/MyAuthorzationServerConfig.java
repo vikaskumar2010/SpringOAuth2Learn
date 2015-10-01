@@ -1,6 +1,7 @@
 package com.snapdeal.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -9,6 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 
 import com.snapdeal.serviceImpl.ClientDetailsServiceImpl;
 
@@ -18,12 +20,17 @@ public class MyAuthorzationServerConfig extends AuthorizationServerConfigurerAda
 	
 	final String RESOURCE_ID = "blog_resource";
 	
-	//@Autowired
-    //private AuthenticationManager authenticationManager;
-
+	@Qualifier("MyClientDetailServiceImplMySql")
+	@Autowired
+	ClientDetailsService clientDetailsService;
+	
+	@Qualifier("MyTokenStore")
+	@Autowired
+	TokenStore tokenStore;
+	
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-    	
+    	endpoints.tokenStore(tokenStore);
     }
     
     @Override
@@ -33,8 +40,8 @@ public class MyAuthorzationServerConfig extends AuthorizationServerConfigurerAda
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-
-    	clients.withClientDetails(new ClientDetailsServiceImpl());
+    	clients.withClientDetails(clientDetailsService);
+    	//clients.withClientDetails(new ClientDetailsServiceImpl());
     		
 //    	clients.inMemory()
 //		 .withClient("client-with-registered-redirect")
