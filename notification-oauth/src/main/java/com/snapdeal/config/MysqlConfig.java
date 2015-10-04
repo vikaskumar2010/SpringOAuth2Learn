@@ -18,7 +18,9 @@ public class MysqlConfig {
 	@Bean
 	public DataSource getDataSource(){
 		DataSource dataSource= new DataSource();
+		
 		System.out.println(env.getRequiredProperty("mysql.driver"));
+		
 		dataSource.setDriverClassName(env.getRequiredProperty("mysql.driver"));
 		dataSource.setUrl(env.getRequiredProperty("mysql.jdbcurl"));
 		dataSource.setUsername(env.getRequiredProperty("mysql.user"));

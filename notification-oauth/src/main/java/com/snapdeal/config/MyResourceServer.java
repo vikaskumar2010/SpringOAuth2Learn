@@ -29,11 +29,12 @@ public class MyResourceServer extends ResourceServerConfigurerAdapter{
 					.access("#oauth2.hasScope('read')")
 			.and()
 				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.NEVER);
-//			.and()
-//				.logout().logoutUrl("logout")
-//				.invalidateHttpSession(true)
-//				.logoutSuccessHandler(logoutSuccessHandler);
+				.sessionCreationPolicy(SessionCreationPolicy.NEVER)
+			.and()
+				.logout().permitAll(false)
+				.logoutUrl("/logout")
+				.invalidateHttpSession(true)
+				.logoutSuccessHandler(logoutSuccessHandler);
 		
 	}
 

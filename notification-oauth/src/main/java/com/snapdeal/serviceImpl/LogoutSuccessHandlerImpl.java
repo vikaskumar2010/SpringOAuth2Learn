@@ -20,15 +20,18 @@ public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler{
 	private TokenStore tokenStore;
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
-		System.out.println("Client:"+authentication.getName() 
-			+" "+authentication.getPrincipal()
-			+" "+authentication.getDetails());
-		Collection<OAuth2AccessToken> tokens = tokenStore.findTokensByClientId("client1");
-		System.out.println("List of token for client1:"+tokens);
-		for(OAuth2AccessToken token : tokens){
-			System.out.println("Removing token:"+token);
-			tokenStore.removeAccessToken(token);
-		}
+		
+		System.out.println("Logout success handler called!");
+		
+//		System.out.println("Client:"+authentication.getName() 
+//			+" "+authentication.getPrincipal()
+//			+" "+authentication.getDetails());
+//		Collection<OAuth2AccessToken> tokens = tokenStore.findTokensByClientId("client1");
+//		System.out.println("List of token for client1:"+tokens);
+//		for(OAuth2AccessToken token : tokens){
+//			System.out.println("Removing token:"+token);
+//			tokenStore.removeAccessToken(token);
+//		}
 	}
 
 }

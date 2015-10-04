@@ -29,14 +29,27 @@ public class ClientDetailsServiceImpl
 		this.dataSource = s;
 		jdbcClientService = new JdbcClientDetailsService(dataSource);
 		
-		ApiClient client = new ApiClient("client1","secret1");
-		client.setAuthorities("ROLE_CLIENT");
-		client.setAuthorizationGrantType("client_credentials");
-		client.setScopes("read");
-		client.setResourceIds(RESOURCE_ID);
-		client.setAccessTokenValidity(500);
+//		ApiClient client = new ApiClient("client1","secret1");
+//		client.setAuthorities("ROLE_CLIENT");
+//		client.setAuthorizationGrantType("client_credentials");
+//		client.setScopes("read");
+//		client.setResourceIds(RESOURCE_ID);
+//		client.setAccessTokenValidity(500);
 		
-		//jdbcClientService.addClientDetails(client);
+		ApiClient client = new ApiClient().createApiClient()
+				.setClientId("client1")
+				.setClientSecret("secret1")
+				.setAuthorities("ROLE_CLIENT")
+				.setAuthorizationGrantType("client_credentials")
+				.setScopes("read")
+				.setResourceIds(RESOURCE_ID)
+				.setAccessTokenValidity(500) //defaultvalue 43200secs (12Hr)
+				.build();
+		
+		//System.out.println(client+"\n\n"+client2);
+		
+		
+//		jdbcClientService.addClientDetails(client);
 		
 	}
 	
